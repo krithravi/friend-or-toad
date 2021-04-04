@@ -1,0 +1,19 @@
+{
+    "region": [
+     
+        {
+            "region":"Ambatolampy",
+            "site": "1",
+            "habitat": "rice paddy",
+            "lat": "19.381",
+            "lat": "19.381"
+        },
+     
+        {
+            "id":"01",
+            "language": "Java",
+            "edition": "third",
+            "author": "Herbert Schildt"
+        }
+    ]
+ }
