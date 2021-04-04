@@ -11,7 +11,7 @@ with open('./model.json', 'r') as json_file:
 
 #load the model architecture
 model = tf.keras.models.model_from_json(json_savedModel)
-model.summary()
+#model.summary()
 
 # predict on a single img
 def convert_to_array(img):

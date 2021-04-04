@@ -7,11 +7,12 @@ import tensorflow as tf
 
 app = Flask(__name__)
 
-@app.route('/hello')
 
 #Reading the model from JSON file
 
+@app.route('/', methods=['GET'])
 def toad(image_data):
+    image_data = request.args.get('data')
     with open('model.json', 'r') as json_file:
         json_savedModel= json_file.read()
 
