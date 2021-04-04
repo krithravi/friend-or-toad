@@ -91,12 +91,21 @@ model.summary()
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
 # train the boi
-model.fit(x_train,y_train,batch_size=50,epochs=100,verbose=1)
+model.fit(x_train, y_train, batch_size = 50,epochs=100,verbose=1)
 
 # test the thing
-score = model.evaluate(x_test, y_test, verbose=1)
+score = model.evaluate(x_test, y_test, verbose = 1)
 print('\n', 'Test accuracy:', score[1])
 
+from keras.models import model_from_json# serialize model to JSON
+model_json = model.to_json()
+with open("model.json", "w") as json_file:
+    json_file.write(model_json)
+# serialize weights to HDF5
+model.save_weights("model.h5")
+print("Saved model to disk")
+
+"""
 
 # predict on a single img
 def convert_to_array(img):
@@ -106,28 +115,29 @@ def convert_to_array(img):
     return np.array(image)
 
 def get_animal_name(label):
-    if label==0:
+    if label == 0:
         return "cane toad"
-    if label==1:
+    if label == 1:
         return "regular frog"
 
 def predict_animal(file):
     print("Predicting .................................")
-    ar=convert_to_array(file)
-    ar=ar/255
-    label=1
+    ar = convert_to_array(file)
+    ar = ar / 255
+    label = 1
 
-    a=[]
+    a = []
     a.append(ar)
-    a=np.array(a)
-    score=model.predict(a,verbose=1)
+    a = np.array(a)
+    score = model.predict(a,verbose=1)
     print(score)
 
-    label_index=np.argmax(score)
+    label_index = np.argmax(score)
     print(label_index)
-    acc=np.max(score)
-    animal=get_animal_name(label_index)
-    print("This frog is a " + animal + " with accuracy = "+str(acc))
+    acc = np.max(score)
+    animal = get_animal_name(label_index)
+    print("This frog is a " + animal + " with accuracy = " + str(acc))
 
 
 predict_animal(sys.argv[1])
+"""
