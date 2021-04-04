@@ -1,0 +1,39 @@
+
+- make a cute site, maybe?
+- make a slideshow
+- add some more data and have some nice stats?
+
+
+
+90- 20 split
+
+for 25 and 25, 0.6000000238418579
+
+with the bhupathy frog
+ Test accuracy: 0.800000011920929
+Predicting .................................
+1/1 [==============================] - 0s 82ms/step
+[[1.2272576e-06 9.9999881e-01]]
+1
+a regular frog
+This frog is aa regular frog with accuracy =    0.9999988
+
+with the tomato frog
+ Test accuracy: 0.6000000238418579
+Predicting .................................
+1/1 [==============================] - 0s 78ms/step
+[[3.3932174e-05 9.9996603e-01]]
+1
+regular frog
+This frog is aregular frog with accuracy = 0.999966
+
+
+oh noooooooo
+ Test accuracy: 0.4000000059604645
+Predicting .................................
+1/1 [==============================] - 0s 86ms/step
+[[4.240214e-06 9.999957e-01]]
+1
+regular frog
+This frog is aregular frog with accuracy = 0.9999957
+
