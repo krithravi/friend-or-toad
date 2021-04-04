@@ -6,7 +6,7 @@ from keras.initializers import glorot_uniform
 import tensorflow as tf
 
 #Reading the model from JSON file
-with open('model.json', 'r') as json_file:
+with open('./model.json', 'r') as json_file:
     json_savedModel= json_file.read()
 
 #load the model architecture
@@ -42,7 +42,9 @@ def predict_animal(file):
     print(label_index)
     acc = np.max(score)
     animal = get_animal_name(label_index)
-    print("This frog is a " + animal + " with accuracy = " + str(acc))
+    res = "This frog is a " + animal + " with accuracy = " + str(acc)
+    print(res)
+    return res
 
 
 predict_animal(sys.argv[1])
