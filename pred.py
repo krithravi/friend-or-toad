@@ -36,10 +36,10 @@ def predict_animal(file):
     a.append(ar)
     a = np.array(a)
     score = model.predict(a,verbose=1)
-    print(score)
+    #print(score)
 
     label_index = np.argmax(score)
-    print(label_index)
+    #print(label_index)
     acc = np.max(score)
     animal = get_animal_name(label_index)
     res = "This frog is a " + animal + " with accuracy = " + str(acc)
