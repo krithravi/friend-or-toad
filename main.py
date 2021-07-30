@@ -55,16 +55,18 @@ test_length=len(x_test)
 
 # "one hot encoding?
 import keras
-from keras.utils import np_utils#One hot encoding
+from keras.utils import np_utils
+#One hot encoding
 
-y_train = keras.utils.to_categorical(y_train,num_classes)
-y_test = keras.utils.to_categorical(y_test,num_classes)
+y_train = np_utils.to_categorical(y_train,num_classes)
+y_test = np_utils.to_categorical(y_test,num_classes)
 
 # done with data prep! *hopefully*
 
 # import sequential model and all the required layers
 from keras.models import Sequential
-from keras.layers import Conv2D,MaxPooling2D,Dense,Flatten,Dropout#make model
+from keras.layers import Conv2D,MaxPooling2D,Dense,Flatten,Dropout
+#make model
 
 model = Sequential()
 
