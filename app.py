@@ -1,4 +1,5 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
+from werkzeug.utils import secure_filename
 from PIL import Image
 import numpy as np
 import os, cv2, sys, getopt
@@ -41,7 +42,7 @@ def predict_animal(file):
     acc = np.max(score)
     animal = get_animal_name(label_index)
     res = "This frog is a " + animal + " with accuracy = " + str(acc)
-    print(res)
+    #print(res)
     return res
 
 @app.route('/', methods=['GET', 'POST'])
@@ -51,18 +52,23 @@ def toad():
         image_data = request.files["pic"]
         npimg = np.fromfile(image_data, np.uint8)
         image_data = cv2.imdecode(npimg, cv2.IMREAD_COLOR)
+        return "<h1>Friend or Toad?</h1> <br>" + str(predict_animal(image_data))
+    else:
+        return "oh no! no data!"
 
-    #print(type(image_data))
-    return predict_animal(image_data)
-    '''
+################## DEALING WITH HTMLs AND STUFF ###########################################
+@app.route('/form', methods=['GET', 'POST'])
+def form():
+   return render_template('form.html')
 
-    fileName = Image.frombytes('RGBA', (128,128), image_data, 'raw')
-    #return predict_animal(fileName);
-    '''
-    return "hey"
+@app.route('/uploader', methods = ['GET', 'POST'])
+def upload_file():
+
+    image_data = request.files["pic"]
+    npimg = np.fromfile(image_data, np.uint8)
+    image_data = cv2.imdecode(npimg, cv2.IMREAD_COLOR)
+    return "<h1>Friend or Toad?</h1> <br>" + str(predict_animal(image_data))
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=5000)
-
-
 
