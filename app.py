@@ -12,7 +12,6 @@ app = Flask(__name__)
 with open('model.json', 'r') as json_file:
     json_savedModel= json_file.read()
 
-#load the model architecture
 model = tf.keras.models.model_from_json(json_savedModel)
 
 def convert_to_array(img):
@@ -48,7 +47,7 @@ def predict_animal(file):
 @app.route('/', methods=['GET', 'POST'])
 def toad():
     if request.method == "POST":
-        #image_data = request.files("pic")
+
         image_data = request.files["pic"]
         npimg = np.fromfile(image_data, np.uint8)
         image_data = cv2.imdecode(npimg, cv2.IMREAD_COLOR)
